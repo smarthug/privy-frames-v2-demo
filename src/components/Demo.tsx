@@ -24,8 +24,7 @@ type Yoinkalytics = {
 };
 
 export default function Demo() {
-  const { ready, authenticated, user, createWallet, connectWallet } =
-    usePrivy();
+  const { ready, authenticated, user, createWallet, linkWallet } = usePrivy();
   const { client } = useSmartWallets();
   const { initLoginToFrame, loginToFrame } = useLoginToFrame();
   const confetti = new JSConfetti();
@@ -317,7 +316,7 @@ export default function Demo() {
             View on Basescan
           </Button>
         )}
-        <Button onClick={connectWallet} variant="secondary">
+        <Button onClick={linkWallet} variant="secondary">
           Connect external wallet
         </Button>
         <Button onClick={closeFrame} variant="secondary">
