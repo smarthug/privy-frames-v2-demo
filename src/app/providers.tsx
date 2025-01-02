@@ -11,6 +11,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
         embeddedWallets: {
           createOnLogin: "all-users",
         },
+        appearance: {
+          walletList: ["detected_wallets"],
+        },
       }}
     >
       <SmartWalletsProvider>{children}</SmartWalletsProvider>

@@ -5,7 +5,7 @@ import frameSdk, { type FrameContext } from "@farcaster/frame-sdk";
 
 import { Button } from "~/components/ui/Button";
 import { FullScreenLoader } from "~/components/ui/FullScreenLoader";
-import { usePrivy, useWallets } from "@privy-io/react-auth";
+import { usePrivy } from "@privy-io/react-auth";
 import { useLoginToFrame } from "@privy-io/react-auth/farcaster";
 import { useSmartWallets } from "@privy-io/react-auth/smart-wallets";
 import { YOINK_ABI } from "~/lib/yoinkAbi";
@@ -24,8 +24,8 @@ type Yoinkalytics = {
 };
 
 export default function Demo() {
-  const { ready, authenticated, user, createWallet } = usePrivy();
-  const { wallets } = useWallets();
+  const { ready, authenticated, user, createWallet, connectWallet } =
+    usePrivy();
   const { client } = useSmartWallets();
   const { initLoginToFrame, loginToFrame } = useLoginToFrame();
   const confetti = new JSConfetti();
@@ -211,11 +211,15 @@ export default function Demo() {
     if (
       authenticated &&
       ready &&
-      wallets.filter((w) => w.walletClientType === "privy").length === 0
+      user &&
+      user.linkedAccounts.filter(
+        (account) =>
+          account.type === "wallet" && account.walletClientType === "privy",
+      ).length === 0
     ) {
       createWallet();
     }
-  }, [authenticated, ready, wallets]);
+  }, [authenticated, ready, user]);
 
   if (!ready || !isSDKLoaded || !authenticated || !yoinkalytics) {
     return <FullScreenLoader />;
@@ -313,6 +317,9 @@ export default function Demo() {
             View on Basescan
           </Button>
         )}
+        <Button onClick={connectWallet} variant="secondary">
+          Connect external wallet
+        </Button>
         <Button onClick={closeFrame} variant="secondary">
           Close
         </Button>
