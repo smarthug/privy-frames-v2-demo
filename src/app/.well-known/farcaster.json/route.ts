@@ -11,11 +11,11 @@ export async function GET() {
     },
     frame: {
       version: "1",
-      name: "Privy Frames V2 Demo",
+      name: "Openfort Kit Frames V2 Demo",
       iconUrl: `${appUrl}/icon.png`,
       homeUrl: `${appUrl}`,
       imageUrl: `${appUrl}/icon.png`,
-      buttonTitle: "Yoink with an embedded wallet!",
+      buttonTitle: "Openfort Kit!",
       splashImageUrl: `${appUrl}/splash.png`,
       splashBackgroundColor: "#5B4FFF",
     },

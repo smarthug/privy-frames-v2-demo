@@ -5,12 +5,13 @@ const appUrl = process.env.NEXT_PUBLIC_URL;
 
 const frame = {
   version: "next",
-  imageUrl: `${appUrl}/opengraph-image.png`,
+  // imageUrl: `${appUrl}/opengraph-image.png`,
+  imageUrl: `${appUrl}/splash.png`,
   button: {
-    title: "Yoink with an embedded wallet!",
+    title: "Openfort Kit!",
     action: {
       type: "launch_frame",
-      name: "Privy Frames v2 Demo",
+      name: "Openfort Kit Demo",
       url: appUrl,
       splashImageUrl: `${appUrl}/splash.png`,
       splashBackgroundColor: "#f7f7f7",
@@ -22,10 +23,10 @@ export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Privy Frames v2 Demo",
+    title: "Openfort Kit v2 Demo",
     openGraph: {
-      title: "Privy Frames v2 Demo",
-      description: "A Privy Frames v2 demo app.",
+      title: "Openfort Kit v2 Demo",
+      description: "A Openfort Kit v2 demo app.",
     },
     other: {
       "fc:frame": JSON.stringify(frame),
